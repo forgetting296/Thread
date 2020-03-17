@@ -18,7 +18,7 @@ public class CountDownLatchTest implements Runnable{
         for(int i = 0;i < 15;i++){
             executorService.submit(test);
         }
-        //放行所有等待的countDown
+        //放行所有等待的countDown  放行的countdown()是在指定的count范围之内的
         countDownLatch.await();
         System.out.println("end");
         executorService.shutdown();
