@@ -16,12 +16,13 @@ import java.util.concurrent.TimeUnit;
 public class CyclicBarrierTest {
 
     public static void main(String[] args) {
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(4,() -> {
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(1,() -> {
             System.out.println("当前线程为: " + Thread.currentThread().getName());
         });
         CyclicBarrierDemo cbd = new CyclicBarrierDemo(cyclicBarrier);
         for(int i = 0;i < 8;i ++) {
             new Thread(cbd,"写线程-" + i).start();
+            cyclicBarrier.reset();//在CyclicBarrier中指定parties为1,启动一个线程之后将cyclicbarrier的计数reset　就能保证多个线程的顺序执行
         }
     }
 }
