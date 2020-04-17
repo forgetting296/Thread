@@ -10,10 +10,15 @@ import java.util.Date;
 public class LocalDateUtils {
 
     public static void main(String[] args){
-        Date expTime = parseStringToDateTime("2020-12-12 00:00:00", "yyyy-MM-dd HH:mm:ss");
+        /*Date expTime = parseStringToDateTime("2020-12-12 00:00:00", "yyyy-MM-dd HH:mm:ss");
         Date nowDate = new Date();
         int i = nowDate.compareTo(expTime);
-        System.out.println(i);
+        System.out.println(i);*/
+        //获取当前日期指定时间之前的日期
+        LocalDateTime localDateTime = LocalDateTime.now().minusDays(1L);
+        Date date = localDateTimeToDate(localDateTime);
+        String s = parseDateTimeToString(date, "yyyy-MM-dd HH:mm:ss");
+        System.out.println(s);
     }
 
     /**
